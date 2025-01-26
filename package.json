@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "scripts": {
+    "start": "concurrently \"cd beckend && nodemon index\" \"cd Nare && npm run dev\""
+  }
+}
