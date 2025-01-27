@@ -603,7 +603,7 @@ const Card = () => {
           <label className=" mt-3 my-1 text-gray-500 text-[12px]	" htmlFor="">
             Billing address
           </label>
-          <select name="" id="" onChange={(e) => SetContry(e.target.value)} defaultValue={null} className="border-b-0 text-sm w-full border rounded-t-md outline-none  px-3 py-2.5 text-gray-600">
+          <select name="" id="" onChange={(e) => SetContry(e.target.value)} defaultValue={null} className="border-b-0 text-sm w-full bg-white border rounded-t-md outline-none  px-3 py-2.5 text-gray-600">
             {
               menu.map((item, i) => {
                 return (
