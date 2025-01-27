@@ -4,7 +4,7 @@ const OrderRouter = express.Router()
 
 
 
-OrderRouter.post("/done", (req, res) => {
+OrderRouter.post("/", (req, res) => {
     const result = new OrderController().create(req.body)
         .then(
             (success) => {
@@ -16,7 +16,6 @@ OrderRouter.post("/done", (req, res) => {
 
 })
 OrderRouter.get("/", (req, res) => {
-    console.log(req)
     const result = new OrderController().dashboard()
         .then(
             (success) => {
@@ -27,4 +26,14 @@ OrderRouter.get("/", (req, res) => {
         })
 })
 
+OrderRouter.delete("/order", (req, res) => {
+    const result = new OrderController().deleteOrder(req.query.id)
+        .then(
+            (success) => {
+                res.send(success)
+            }
+        ).catch((error) => {
+            res.send(error)
+        })
+})
 module.exports = OrderRouter;
