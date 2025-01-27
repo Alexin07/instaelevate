@@ -14,7 +14,7 @@ const Card = () => {
   const [expiry, setExpiry] = useState("");
   const [contry, SetContry] = useState("United States")
   const [Province, SetProvince] = useState("null")
-
+const [price, setPrice] = useState('');
 
   const handleExpiryChange = (e) => {
     let value = e.target.value.replace(/\D/g, ""); // Sirf numbers rakho
@@ -22,6 +22,16 @@ const Card = () => {
       value = value.slice(0, 2) + " / " + value.slice(2, 4); // `/` add karo 2nd position ke baad
     }
     setExpiry(value);
+  };
+
+   const handleInputChange = (e) => {
+    const value = e.target.value;
+
+    // Remove any non-numeric characters except `.`
+    const numericValue = value.replace(/[^0-9.]/g, '');
+
+    // Update the state with the formatted value
+    setPrice(numericValue ? `$${numericValue}` : '');
   };
 
   const menu = [
@@ -529,11 +539,15 @@ const Card = () => {
       <div className="flex flex-col justify-center mt-20 mx-3  ">
         <h1 className="text-center my-0.5 text-gray-600">InstaElevate</h1>
         <form className="flex flex-col mt-5 " action="" onSubmit={FormSubmitHandler}>
-          <input required id="number"
-            className="shadow-sm py-1 border rounded-md text-center text-2xl font-medium outline-[3.5px]  focus:outline focus:outline-blue-200   focus:border-blue-400"
-            type="Number"
+          <input
+            required
+            id="number"
+            className="shadow-sm py-1 border rounded-md text-center text-2xl font-medium outline-[3.5px] focus:outline focus:outline-blue-200 focus:border-blue-400"
+            type="text" // Keep it as text to handle formatting
             name="price"
+            value={price}
             placeholder="US$0.00"
+            onChange={handleInputChange}
           />
 
           <label className=" my-1 text-gray-500 text-[12px] mt-10	" htmlFor="">
