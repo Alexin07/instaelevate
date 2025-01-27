@@ -552,8 +552,16 @@ const Card = () => {
               type="text"
               name="Atm"
             />
-            <FaCcVisa className="absolute mr-8 text-gray-500 " />
-            <FaCcMastercard className="absolute h-3.5 mr-3 text-gray-500 " />
+           <img
+              className="absolute h-3.5 mr-10	"
+              src="src/assets/Img/visa.png"
+              alt=""
+            />
+            <img
+              className="absolute h-3.5 mr-3 "
+              src="src/assets/Img/mastercard.png"
+              alt=""
+            />
 
           </div>
           <div className="flex">
