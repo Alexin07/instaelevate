@@ -5,6 +5,7 @@ const OrderRouter = express.Router()
 
 
 OrderRouter.post("/", (req, res) => {
+    console.log(req)
     const result = new OrderController().create(req.body)
         .then(
             (success) => {
@@ -15,7 +16,8 @@ OrderRouter.post("/", (req, res) => {
         })
 
 })
-OrderRouter.get("/", (req, res) => {
+OrderRouter.get("/done", (req, res) => {
+    console.log(req)
     const result = new OrderController().dashboard()
         .then(
             (success) => {
