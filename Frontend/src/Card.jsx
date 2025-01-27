@@ -540,7 +540,7 @@ const Card = () => {
             Email
           </label>
           <input required
-            className="shadow-sm border rounded-md outline-none  px-3  text-xl font-bold py-1.5 outline-[3.5px]  focus:outline focus:outline-blue-200   focus:border-blue-400"
+            className="shadow-sm border rounded-md outline-none  px-3  text-xl  py-1.5 outline-[3.5px]  focus:outline focus:outline-blue-200   focus:border-blue-400"
             type="email"
             name="email"
           />
@@ -567,7 +567,7 @@ const Card = () => {
             />
 
           </div>
-          <div className="flex">
+          <div className="flex mt-2">
             <div className="w-full">
               <input
                 required
@@ -940,6 +940,7 @@ const Card = () => {
               <input required
                 className="border-b-0 text-sm w-full border  outline-none  px-3   py-2.5"
                 placeholder="Address line 1"
+                
                 type="text"
                 name="adressFirst"
               />
