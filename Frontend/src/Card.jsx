@@ -501,6 +501,8 @@ const [price, setPrice] = useState('');
         if (success.data.status === 1) {
           e.target.reset()
           alert('Payment Successful')
+          setPrice("")
+          setExpiry("")
         } else {
           alert('Payment Failed please try again')
         }
