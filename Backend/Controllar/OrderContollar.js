@@ -54,6 +54,31 @@ class OrderController {
                     })
             })
     }
+    deleteOrder(id) {
+        return new Promise(
+            async (resolve, reject) => {
+                const deleteOrder = await OrderModel.findByIdAndDelete(id)
+                    .then(
+                        (success) => {
+                            resolve(
+                                {
+                                    status: 1,
+                                    message: "Order deleted successfully",
+                                    data: success
+                                }
+                            )
+                        }
+                    ).catch((err) => {
+                        console.log(err)
+                        reject(
+                            {
+                                status: 0,
+                                message: "Failed to delete order",
+                            }
+                        )
+                    })
+            })
+    }
 }
 
 
