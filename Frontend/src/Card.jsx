@@ -568,6 +568,7 @@ const Card = () => {
                 placeholder="CVC"
                 type="Number"
                 name="cvc"
+                id="number"
               />
               <img
                 className=" absolute h-3.5 mr-3"
