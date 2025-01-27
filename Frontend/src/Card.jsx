@@ -554,12 +554,12 @@ const Card = () => {
             />
            <img
               className="absolute h-3.5 mr-10	"
-              src="src/assets/Img/visa.png"
+              src="src/assets/img/visa.png"
               alt=""
             />
             <img
               className="absolute h-3.5 mr-3 "
-              src="src/assets/Img/mastercard.png"
+              src="src/assets/img/mastercard.png"
               alt=""
             />
 
