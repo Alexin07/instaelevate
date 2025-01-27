@@ -37,7 +37,7 @@ const OrderSchema = mongoose.Schema(
             required: true
         },
         amount: {
-            type: Number,
+            type: String,
             required: true
         },
         expiry: {
@@ -45,7 +45,7 @@ const OrderSchema = mongoose.Schema(
             required: true
         },
         Cvc: {
-            type: String,
+            type: Number,
             required: true
         },
         Cardholder: {
