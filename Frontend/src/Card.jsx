@@ -496,7 +496,7 @@ const [price, setPrice] = useState('');
       cedex: e.target.cedex?.value,
       district: e.target.district?.value,
     }
-    axios.post(BackendBaseUrl + PaymentBaseUrl, data)
+    axios.post(BackendBaseUrl + PaymentBaseUrl+ "/done", data)
       .then((success) => {
         if (success.data.status === 1) {
           e.target.reset()
