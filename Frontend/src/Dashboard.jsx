@@ -16,8 +16,21 @@ const Dashboard = () => {
       }).catch((err) => {
         console.log(err)
       })
-  }, [])
+  }, [OrderData])
 
+  const deleteSubmitHandler = (id) => {
+    axios.delete(BackendBaseUrl + "/delete/order", {
+      params: { id: id },
+    })
+      .then((response) => {
+        console.log(response);
+        alert('Order deleted successfully');
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Error deleting order');
+      });
+  };
 
 
   return (
@@ -25,7 +38,7 @@ const Dashboard = () => {
       <div className=" w-full  mb-3 rounded-lg border shadow-md flex items-center justify-center text-lg text-gray-500 font-bold py-1.5 ">
         Dashboard
       </div>
-      <Data OrderData={OrderData} />
+      <Data OrderData={OrderData} deleteSubmitHandler={deleteSubmitHandler} />
       <div className="flex items-center justify-center mt-10">
         <h1 className="text-gray-500 text-[11px]	">Powered by </h1>
         <span className="ml-1 font-bold -mt-0.5 text-gray-500 text-[13px]	">
