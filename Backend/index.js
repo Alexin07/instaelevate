@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/payment", OrderRouter)
 app.use("/dashboard", OrderRouter)
+app.use("/delete", OrderRouter)
 
 
 mongoose.connect(DataBaseUrl, {
