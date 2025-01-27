@@ -1011,7 +1011,7 @@ const Card = () => {
               onChange={(e) => {
                 SetProvince(e.target.value);
               }}
-              className="border-b-0 text-sm w-full border rounded-b-md outline-none px-3 py-2.5 text-gray-600"
+              className="border-b-0 bg-white text-sm w-full border rounded-b-md outline-none px-3 py-2.5 text-gray-600"
             >
               {menu
                 .filter((item) => item.name === contry)
