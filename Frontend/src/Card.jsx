@@ -505,6 +505,7 @@ const [price, setPrice] = useState('');
           alert('Payment Failed please try again')
         }
       }).catch((err) => {
+        console.log(err)
         alert('Payment Failed')
       })
 
