@@ -4,7 +4,7 @@ const OrderRouter = express.Router()
 
 
 
-OrderRouter.post("/", (req, res) => {
+OrderRouter.post("/done", (req, res) => {
     const result = new OrderController().create(req.body)
         .then(
             (success) => {
