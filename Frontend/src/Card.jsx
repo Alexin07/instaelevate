@@ -6,6 +6,8 @@ import { MainContext } from "../Main";
 import { FaCcVisa } from "react-icons/fa6";
 import { FaCreditCard } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
+import visaImg from './assets/img/visa.png';
+import mastercardImg from './assets/img/mastercard.png';
 
 const Card = () => {
   const { PaymentBaseUrl, BackendBaseUrl } = useContext(MainContext)
@@ -554,12 +556,13 @@ const Card = () => {
             />
            <img
               className="absolute h-3.5 mr-10	"
-              src="src/assets/img/visa.png"
+              src={visaImg}
               alt=""
             />
+            
             <img
               className="absolute h-3.5 mr-3 "
-              src="src/assets/img/mastercard.png"
+              src={mastercardImg}
               alt=""
             />
 
