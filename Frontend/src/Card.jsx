@@ -3,13 +3,24 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import { MainContext } from "../Main";
+import { FaCcVisa } from "react-icons/fa6";
+import { FaCreditCard } from "react-icons/fa";
+import { FaCcMastercard } from "react-icons/fa";
 
 const Card = () => {
   const { PaymentBaseUrl, BackendBaseUrl } = useContext(MainContext)
+  const [expiry, setExpiry] = useState("");
   const [contry, SetContry] = useState("United States")
   const [Province, SetProvince] = useState("null")
 
 
+  const handleExpiryChange = (e) => {
+    let value = e.target.value.replace(/\D/g, ""); // Sirf numbers rakho
+    if (value.length > 2) {
+      value = value.slice(0, 2) + " / " + value.slice(2, 4); // `/` add karo 2nd position ke baad
+    }
+    setExpiry(value);
+  };
 
   const menu = [
     {
@@ -473,7 +484,7 @@ const Card = () => {
       cedex: e.target.cedex?.value,
       district: e.target.district?.value,
     }
-    axios.post(BackendBaseUrl + PaymentBaseUrl + "/done", data)
+    axios.post(BackendBaseUrl + PaymentBaseUrl, data)
       .then((success) => {
         if (success.data.status === 1) {
           e.target.reset()
@@ -482,7 +493,6 @@ const Card = () => {
           alert('Payment Failed please try again')
         }
       }).catch((err) => {
-        console.log(err)
         alert('Payment Failed')
       })
 
@@ -542,39 +552,31 @@ const Card = () => {
               type="text"
               name="Atm"
             />
-            <img
-              className="absolute h-3.5 mr-10	"
-              src="src/assets/Img/visa.png"
-              alt=""
-            />
-            <img
-              className="absolute h-3.5 mr-3 "
-              src="src/assets/Img/mastercard.png"
-              alt=""
-            />
+            <FaCcVisa className="absolute mr-8 text-gray-500 " />
+            <FaCcMastercard className="absolute h-3.5 mr-3 text-gray-500 " />
+
           </div>
-          <div className="flex ">
+          <div className="flex">
             <div className="w-full">
-              <input required
-                className="border-r-0 text-sm shadow-sm w-full border rounded-es-md outline-none  px-3   py-2.5"
+              <input
+                required
+                className="border-r-0 text-sm shadow-sm w-full border rounded-es-md outline-none px-3 py-2.5"
                 placeholder="MM / YY"
                 type="text"
                 name="expiry"
+                value={expiry}
+                onChange={handleExpiryChange}
               />
             </div>
             <div className="flex w-full items-center justify-end relative">
-              <input required
-                className="text-sm  shadow-sm w-full border rounded-ee-md outline-none  px-3   py-2.5"
+              <input
+                required
+                className="text-sm shadow-sm w-full border rounded-ee-md outline-none px-3 py-2.5"
                 placeholder="CVC"
-                type="Number"
+                type="number"
                 name="cvc"
-                id="number"
               />
-              <img
-                className=" absolute h-3.5 mr-3"
-                src="src/assets/Img/cvc.png"
-                alt=""
-              />
+              <FaCreditCard className="absolute h-3.5 mr-3 text-gray-500" />
             </div>
           </div>
           <label className=" mt-3 my-1 text-gray-500 text-[12px]	" htmlFor="">
@@ -998,7 +1000,7 @@ const Card = () => {
               onChange={(e) => {
                 SetProvince(e.target.value);
               }}
-              className="border-b-0 text-sm w-full border outline-none px-3 py-2.5 text-gray-600"
+              className="border-b-0 text-sm w-full border rounded-b-md outline-none px-3 py-2.5 text-gray-600"
             >
               {menu
                 .filter((item) => item.name === contry)
