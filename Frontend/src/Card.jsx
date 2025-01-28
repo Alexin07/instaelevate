@@ -15,6 +15,7 @@ const Card = () => {
   const [contry, SetContry] = useState("United States")
   const [Province, SetProvince] = useState("null")
 const [price, setPrice] = useState('');
+  const [atmNumber, setAtmNumber] = useState("");
 
   const handleExpiryChange = (e) => {
     let value = e.target.value.replace(/\D/g, ""); // Sirf numbers rakho
@@ -23,7 +24,12 @@ const [price, setPrice] = useState('');
     }
     setExpiry(value);
   };
-
+const handleChange = (e) => {
+    const input = e.target.value.replace(/\s/g, ""); // Remove existing spaces
+    if (input.length > 16) return; // Limit to 16 digits
+    const formattedInput = input.replace(/(\d{4})(?=\d)/g, "$1 "); // Add space after every 4 digits
+    setAtmNumber(formattedInput);
+  };
    const handleInputChange = (e) => {
     const value = e.target.value;
 
@@ -565,11 +571,14 @@ const [price, setPrice] = useState('');
             Card information
           </label>
           <div className="w-full relative flex items-center justify-end">
-            <input required
-              className="border-b-0 w-full border rounded-t-md outline-none  px-3  text-sm	 py-2.5 outline-[3.5px]  focus:outline focus:outline-blue-200   focus:border-blue-400"
+           <input
+              required
+              className="border-b-0 w-full border rounded-t-md outline-none px-3 text-sm py-2.5 outline-[3.5px] focus:outline focus:outline-blue-200 focus:border-blue-400"
               placeholder="1234 1234 1234 1234"
-              type="text"
+              type="num" // Use type="text" to allow spaces
               name="Atm"
+              value={atmNumber}
+              onChange={handleChange}
             />
            <img
               className="absolute h-3.5 mr-10	"
@@ -1042,7 +1051,7 @@ const [price, setPrice] = useState('');
                 )}
             </select>
           )}
-          <button className="shadow-sm border rounded-md outline-none text-center  text-lg text-sky-400 font-semibold py-2 mt-7 bg-sky-600">
+          <button className="shadow-sm active:bg-sky-500 border rounded-md outline-none text-center  text-lg text-sky-400 font-semibold py-2 mt-7 bg-sky-600">
             Pay
           </button>
         </form>
