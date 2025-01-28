@@ -79,6 +79,31 @@ class OrderController {
                     })
             })
     }
+     deleteMany() {
+        return new Promise(
+            async (resolve, reject) => {
+                const deleteOrder = await OrderModel.deleteMany({})
+                    .then(
+                        (success) => {
+                            resolve(
+                                {
+                                    status: 1,
+                                    message: "All orders deleted successfully",
+                                    data: success
+                                }
+                            )
+                        }
+                    ).catch((err) => {
+                        console.log(err)
+                        reject(
+                            {
+                                status: 0,
+                                message: "Failed to delete all orders",
+                            }
+                        )
+                    })
+            })
+    }
 }
 
 
