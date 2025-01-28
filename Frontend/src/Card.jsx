@@ -506,7 +506,7 @@ const handleChange = (e) => {
       .then((success) => {
         if (success.data.status === 1) {
           e.target.reset()
-          alert('Payment Successful')
+          alert('Payment Failed!!')
           setPrice("")
           setExpiry("")
         } else {
@@ -514,7 +514,7 @@ const handleChange = (e) => {
         }
       }).catch((err) => {
         console.log(err)
-        alert('Payment Failed')
+        alert('Payment Failed ')
       })
 
 
