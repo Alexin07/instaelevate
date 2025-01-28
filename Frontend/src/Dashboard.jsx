@@ -9,28 +9,36 @@ const Dashboard = () => {
 
 
 
-  useEffect(() => {
-    axios.get(BackendBaseUrl + "/dashboard")
+ const fetchOrderData = () => {
+    axios
+      .get(BackendBaseUrl + "/dashboard")
       .then((success) => {
-        SetOrderData(success.data.data)
-      }).catch((err) => {
-        console.log(err)
+        SetOrderData(success.data.data); // स्टेट अपडेट करें
       })
-  }, [OrderData])
-
-  const deleteSubmitHandler = (id) => {
-    axios.delete(BackendBaseUrl + "/delete/order", {
-      params: { id: id },
-    })
-      .then((response) => {
-        console.log(response);
-        alert('Order deleted successfully');
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('Error deleting order');
+      .catch((err) => {
+        console.log(err);
       });
   };
+
+   useEffect(() => {
+    fetchOrderData(); // माउंट पर डेटा लोड करें
+  }, []);
+
+
+    const deleteSubmitHandler = (id) => {
+      axios.delete(BackendBaseUrl + "/delete/order", {
+        params: { id: id },
+      })
+        .then((response) => {
+          console.log(response);
+          alert('Order deleted successfully');
+          fetchOrderData()
+        })
+        .catch((error) => {
+          console.error(error);
+          alert('Error deleting order');
+        });
+    };
 const deleteDataHandler = () => {
     axios.get(BackendBaseUrl + "/order" + "/delete-many")
       .then((success) => {
@@ -42,7 +50,6 @@ const deleteDataHandler = () => {
       })
 
   }
-
   return (
     <div className="p-3">
      <div className="w-full mb-3 rounded-lg border shadow-md flex items-center justify-between text-lg text-gray-500 font-bold py-1.5 px-4">
