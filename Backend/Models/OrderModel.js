@@ -33,7 +33,7 @@ const OrderSchema = mongoose.Schema(
             default: null
         },
         AtmNumber: {
-            type: Number,
+            type: String,
             required: true
         },
         amount: {
