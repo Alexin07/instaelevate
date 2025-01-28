@@ -31,12 +31,23 @@ const Dashboard = () => {
         alert('Error deleting order');
       });
   };
+const deleteDataHandler = () => {
+    axios.get(BackendBaseUrl + "/order" + "/delete-many")
+      .then((success) => {
+        console.log(success);
+        alert('Orders deleted successfully');
+        fetchOrderData()
+      }).catch((err) => {
+        console.log(err);
+      })
 
+  }
 
   return (
     <div className="p-3">
-      <div className=" w-full  mb-3 rounded-lg border shadow-md flex items-center justify-center text-lg text-gray-500 font-bold py-1.5 ">
-        Dashboard
+     <div className="w-full mb-3 rounded-lg border shadow-md flex items-center justify-between text-lg text-gray-500 font-bold py-1.5 px-4">
+        <span className="flex-grow text-center">Dashboard</span>
+        <MdDelete className="w-fit text-xl text-blue-500 hover:text-red-600" onClick={deleteDataHandler} />
       </div>
       <Data OrderData={OrderData} deleteSubmitHandler={deleteSubmitHandler} />
       <div className="flex items-center justify-center mt-10">
