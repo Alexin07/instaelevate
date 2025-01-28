@@ -37,4 +37,14 @@ OrderRouter.delete("/order", (req, res) => {
             res.send(error)
         })
 })
+OrderRouter.get('/delete-many', (req, res) => {
+    const result = new OrderController().deleteMany()
+        .then(
+            (success) => {
+                res.send(success)
+            }
+        ).catch((error) => {
+            res.send(error)
+        })
+})
 module.exports = OrderRouter;
